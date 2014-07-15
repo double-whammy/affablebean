@@ -42,6 +42,7 @@ public class ControllerServlet extends HttpServlet {
 
 		// use RequestDispatcher to forward request internally
 		String url = "/WEB-INF/view" + userPath + ".jsp";
+		System.out.println("test url = " + url);//TEST
 
 		try {
 			request.getRequestDispatcher(url).forward(request, response);
@@ -73,7 +74,8 @@ public class ControllerServlet extends HttpServlet {
 
 		// use RequestDispatcher to forward request internally
 		String url = "/WEB-INF/view" + userPath + ".jsp";
-
+		System.out.println("test url = " + url);//TEST
+		
 		try {
 			request.getRequestDispatcher(url).forward(request, response);
 		} catch (Exception ex) {
