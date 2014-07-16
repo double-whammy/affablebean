@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ page language="java" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,7 +8,7 @@
 </head>
 <body>
 
-<sql:query var="categories" dataSource="jdbc/affablebean">
+	<sql:query var="categories" dataSource="jdbc/affablebean">
     SELECT * FROM category
 </sql:query>
 
@@ -22,23 +23,16 @@
 	</div>
 
 	<div id="indexRightColumn">
-		<div class="categoryBox">
-			<a href="#"> <span class="categoryLabelText">dairy</span>
-			</a>
-		</div>
-		<div class="categoryBox">
-			<a href="#"> <span class="categoryLabelText">meats</span>
-			</a>
-		</div>
-		<div class="categoryBox">
-			<a href="#"> <span class="categoryLabelText">bakery</span>
-			</a>
-		</div>
-		<div class="categoryBox">
-			<a href="#"> <span class="categoryLabelText">fruit &amp;
-					veg</span>
-			</a>
-		</div>
+		<c:forEach var="category" items="${categories.rows}">
+			<div class="categoryBox">
+				<a href="category?${category.id}"> <span
+					class="categoryLabelText">${category.name}</span> <img
+					src="${initParam.categoryImagePath}${category.name}.jpg"
+					alt="${category.name}">
+				</a>
+			</div>
+		</c:forEach>
 	</div>
+
 </body>
 </html>
