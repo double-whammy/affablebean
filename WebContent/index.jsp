@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<%-- 
+	<%-- Using EJB and JPA instead of SQL and JDBC.
 <sql:query var="categories" dataSource="jdbc/affablebean">
     SELECT * FROM category
 </sql:query> 
