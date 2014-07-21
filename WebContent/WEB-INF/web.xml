@@ -18,6 +18,12 @@
       <include-coda>/WEB-INF/jspf/footer.jspf</include-coda>
     </jsp-property-group>
   </jsp-config>
+  
+<!--   
+
+Data source is no longer needed because we use JPA to manage all database related
+jobs, instead of jdbc and sql tags in our jsp pages.
+
   <resource-ref>
     <description>Connects to database for AffableBean application</description>
     <res-ref-name>jdbc/affablebean</res-ref-name>
@@ -25,6 +31,9 @@
     <res-auth>Container</res-auth>
     <res-sharing-scope>Shareable</res-sharing-scope>
   </resource-ref>
+
+-->  
+  
   <context-param>
     <description>The relative path to product images</description>
     <param-name>productImagePath</param-name>

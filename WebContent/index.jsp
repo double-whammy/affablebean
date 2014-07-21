@@ -8,9 +8,11 @@
 </head>
 <body>
 
-	<sql:query var="categories" dataSource="jdbc/affablebean">
+	<%-- 
+<sql:query var="categories" dataSource="jdbc/affablebean">
     SELECT * FROM category
-</sql:query>
+</sql:query> 
+--%>
 
 	<div id="indexLeftColumn">
 		<div id="welcomeText">
@@ -23,7 +25,10 @@
 	</div>
 
 	<div id="indexRightColumn">
-		<c:forEach var="category" items="${categories.rows}">
+
+		<%-- Was categories.rows when we used SQL query instead of JPA and EJB--%>
+
+		<c:forEach var="category" items="${categories}">
 			<div class="categoryBox">
 				<a href="category?${category.id}"> <span
 					class="categoryLabelText">${category.name}</span> <img

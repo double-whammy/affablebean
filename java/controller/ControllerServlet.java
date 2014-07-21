@@ -1,11 +1,15 @@
 package controller;
 
 import java.io.IOException;
+
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import session.CategoryFacade;
 
 @WebServlet(name = "ControllerServlet", urlPatterns = { "/category",
 		"/addToCart", "/viewCart", "/updateCart", "/checkout", "/purchase",
@@ -13,6 +17,19 @@ import javax.servlet.http.HttpServletResponse;
 public class ControllerServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+
+	@EJB
+	private CategoryFacade categoryFacade;
+
+	@Override
+	public void init() throws ServletException {
+
+		// store category list as an application-scoped
+		// attribute. That is, as an attribute of the servlet context
+		// object of your web app
+		getServletContext()
+				.setAttribute("categories", categoryFacade.findAll());
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest request,
@@ -42,7 +59,7 @@ public class ControllerServlet extends HttpServlet {
 
 		// use RequestDispatcher to forward request internally
 		String url = "/WEB-INF/view" + userPath + ".jsp";
-		System.out.println("test url = " + url);//TEST
+		System.out.println("test url = " + url);// TEST
 
 		try {
 			request.getRequestDispatcher(url).forward(request, response);
@@ -74,8 +91,8 @@ public class ControllerServlet extends HttpServlet {
 
 		// use RequestDispatcher to forward request internally
 		String url = "/WEB-INF/view" + userPath + ".jsp";
-		System.out.println("test url = " + url);//TEST
-		
+		System.out.println("test url = " + url);// TEST
+
 		try {
 			request.getRequestDispatcher(url).forward(request, response);
 		} catch (Exception ex) {
