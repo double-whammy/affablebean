@@ -5,12 +5,6 @@
 	<persistence-unit name="AffableBeanPU"
 		transaction-type="JTA">
 		<jta-data-source>jdbc/affablebean</jta-data-source>
-		<class>entity.Category</class>
-		<class>entity.Customer</class>
-		<class>entity.CustomerOrder</class>
-		<class>entity.OrderedProduct</class>
-		<class>entity.OrderedProductPK</class>
-		<class>entity.Product</class>
 		<properties>
 			<property name="eclipselink.logging.level" value="FINEST" />
 		</properties>

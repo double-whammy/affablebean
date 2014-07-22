@@ -1,17 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package session;
 
+import java.util.ArrayList;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 
-/**
- *
- * @author tgiunipero
- */
 public abstract class AbstractFacade<T> {
     private Class<T> entityClass;
 
@@ -37,12 +31,19 @@ public abstract class AbstractFacade<T> {
         return getEntityManager().find(entityClass, id);
     }
 
-    public List<T> findAll() {
+/*
+ *     public List<T> findAll() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
     }
+ * */
 
+    public List<T> findAll() {
+    	List<T> dummy = new ArrayList<T>();
+    	return dummy;
+    }
+    
     public List<T> findRange(int[] range) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
